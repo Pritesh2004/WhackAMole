@@ -8,26 +8,127 @@
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <link rel="icon" href="images/hammer2.png">
-
     <title>Login</title>
+    <style>
+        body {
+            background-color: rgba(0, 0, 0, 0.05);
+            display: flex;
+            justify-content: center;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        #box {
+            border: 3px transparent solid;
+            border-radius: 15px;
+            margin-top: 100px;
+            background-color: white;
+            width: 80%;
+            max-width: 900px;
+            height: 500px;
+            display: grid;
+            grid-template-rows: 100%;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        #box1 {
+            grid-row-start: 1;
+            grid-row-end: 1;
+            grid-column-start: 1;
+            grid-column-end: 1;
+        }
+
+        #box11 {
+            display: flex;
+            flex-direction: column;
+            margin-top: 35px;
+            margin-left: 20px;
+        }
+
+        .field {
+            border: 2px black solid;
+            border-top: transparent;
+            border-left: transparent;
+            border-right: transparent;
+            width: 100%;
+            max-width: 300px;
+            margin-top: 20px;
+            height: 35px;
+        }
+
+        #btn {
+            margin-top: 10px;
+            width: 150px;
+            height: 40px;
+            background-color: orangered;
+            border: 2px transparent solid;
+            border-radius: 10px;
+            color: white;
+            box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        #box2 {
+            grid-row-start: 1;
+            grid-row-end: 1;
+            grid-column-start: 2;
+            grid-column-end: 2;
+        }
+
+        @keyframes smallBig {
+            0% {
+                transform: scale(0);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        #img {
+            animation: smallBig 1.4s ease-out 0.05s;
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Media query for smaller screens */
+        @media only screen and (max-width: 768px) {
+            #box {
+                grid-template-columns: 1fr;
+            }
+
+            #box1,
+            #box2 {
+                grid-column-start: 1;
+                grid-column-end: 1;
+            }
+
+            #box2 {
+                display: none; /* Hide the image on smaller screens */
+            }
+
+            #btn {
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+    </style>
 </head>
 
 <body>
-
-
     <div id="box">
         <div id="box1">
-            <h1 style="margin-top: 80px; margin-left: 80px;">Login</h1>
-            <form name="f1" action = "login.php" onsubmit = "return validation()" method = "POST">
+            <h1 style="margin-top: 20px; margin-left: 20px;">Login</h1>
+            <form name="f1" action="login.php" onsubmit="return validation()" method="POST">
                 <div id="box11">
                     <i class="fa fa-user" aria-hidden="true"></i>
-                    <input class="field" type="text" name="username" id="username" placeholder="Enter Username " required>
-                    <input class="field" type="text" name="password" id="password" placeholder="Enter Password Name" required>
+                    <input class="field" type="text" name="username" id="username" placeholder="Enter Username "
+                        required>
+                    <input class="field" type="password" name="password" id="password" placeholder="Enter Password "
+                        required>
                     <div style="display: flex; flex-direction: row; margin-top: 30px;">
                         <p>Don't have an account? </p><a style="margin-top: 16px; margin-left: 5px;"
-                            href="signup.html">Singup here</a>
+                            href="signup.html">Signup here</a>
                     </div>
-
                     <input id="btn" type="submit" value="Submit">
                 </div>
             </form>
@@ -36,26 +137,26 @@
             <img src="images/login.gif" id="img">
         </div>
     </div>
-    <script>  
-        function validation()  
-        {  
-            var id=document.f1.username.value;  
-            var ps=document.f1.password.value;  
-            if(id.length=="" && ps.length=="") {  
-                alert("User Name and Password fields are empty");  
-                return false;  
-            }  
-            else  
-            {  
-                if(id.length=="") {  
-                    alert("User Name is empty");  
-                    return false;  
-                }   
-                if (ps.length=="") {  
-                alert("Password field is empty");  
-                return false;  
-                }  
-            }                             
-        }  
-    </script>  
+
+    <script>
+        function validation() {
+            var id = document.f1.username.value;
+            var ps = document.f1.password.value;
+            if (id.length == "" && ps.length == "") {
+                alert("User Name and Password fields are empty");
+                return false;
+            } else {
+                if (id.length == "") {
+                    alert("User Name is empty");
+                    return false;
+                }
+                if (ps.length == "") {
+                    alert("Password field is empty");
+                    return false;
+                }
+            }
+        }
+    </script>
 </body>
+
+</html>
