@@ -3,7 +3,7 @@ $server="localhost";
 $username="root";
 $password="";
 $database="whackamole";
-$port="3308";
+$port="3306";
 
 $conn  = mysqli_connect($server,$username,$password,$database,$port);
 
