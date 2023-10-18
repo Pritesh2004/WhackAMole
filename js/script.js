@@ -57,7 +57,7 @@ modal.addEventListener('click', e => {
       changeVelocityLevel(null, 2)
       changeTimeLevel(null, '10')
       break;
-  
+
     default:
       return
   }
@@ -84,9 +84,9 @@ function up(e) {
   if (this.classList.contains('up')) {
     this.classList.remove('up');
 
-    if(volume_level) {
+    if (volume_level) {
       const x = Math.round(Math.random() * (2 - 1) + 1);
-      if(x === 1) {
+      if (x === 1) {
         hit_sfx.currentTime = 0;
         hit_sfx.play();
       } else {
@@ -110,7 +110,7 @@ function peep() {
   const randomTime = getRandomTime();
   const hole = randomHole(holes);
   hole.classList.add('up');
-  if(volume_level) {
+  if (volume_level) {
     peep_sfx.currentTime = 0;
     peep_sfx.play();
   }
@@ -133,7 +133,7 @@ function randomHole(holes) {
 
 function startTime() {
   if (started === false) {
-    if(volume_level) {
+    if (volume_level) {
       start_sfx.currentTime = 0.125;
       start_sfx.play();
     }
@@ -153,7 +153,7 @@ function startTime() {
         clearInterval(countdown);
         timeUp = true;
         started = false;
-        if(volume_level) {
+        if (volume_level) {
           ding_sfx.currentTime = 0
           ding_sfx.play()
         }
@@ -175,6 +175,7 @@ function scoreboardUpdater() {
 }
 function enterName(e) {
   if (e.keyCode === 13) {
+    
     name = this.value;
     this.value = '';
     nameContainer.classList.remove('flex');
@@ -207,6 +208,38 @@ function enterName(e) {
     table.querySelector('.score-button').addEventListener('click', goMenu);
   }
 }
+
+// function showMenu() {
+//   nameContainer.classList.remove('flex');
+//   nameContainer.classList.remove('opacity');
+//   scoreboard.classList.add('block');
+//   scoreboard.classList.add('opacity');
+//   // scoreboardTable.push({ name, score: finalScore });
+//   // localStorage.setItem('scoreboard', JSON.stringify(scoreboardTable));
+//   // sortedScoreTable = scoreboardTable.sort((a, b) => (a.score > b.score ? -1 : 1));
+//   table.innerHTML = `
+// <button class="score-button">X</button>
+// <thead>
+//     <tr>
+//         <th>#</th>
+//         <th>Name</th>
+//         <th>Score</th>
+//     </tr>
+// </thead>`;
+
+//   for (let i = 0; i < sortedScoreTable.length; i++) {
+//     if (i > 7) break;
+//     table.innerHTML += `
+//   <tr>
+//     <td>${i + 1}</td>
+//     <td>${sortedScoreTable[i].name}</td>
+//     <td>${sortedScoreTable[i].score}</td>
+//   </tr>
+//   `;
+//   }
+//   table.querySelector('.score-button').addEventListener('click', goMenu);
+
+// }
 
 function goMenu() {
   scoreboard.classList.remove('block');
@@ -243,7 +276,7 @@ function getTime() {
 function changeVelocityLevel(e, n) {
   const element = velocityLevelDOM.children[1]
   const currentLevel = n || +element.textContent
-  if(volume_level) {
+  if (volume_level) {
     start_sfx.currentTime = 0.125;
     start_sfx.play();
   }
@@ -275,7 +308,7 @@ function changeVelocityLevel(e, n) {
 function changeTimeLevel(e, n) {
   const element = timeLevelDOM.children[1]
   const currentLevel = n || element.textContent
-  if(volume_level) {
+  if (volume_level) {
     start_sfx.currentTime = 0.125;
     start_sfx.play();
   }
@@ -312,12 +345,12 @@ function changeVolumeLevel() {
       element.textContent = ''
       volume_level = 1
       break;
-      default:
+    default:
       element.textContent = 'X'
       volume_level = 0
       break;
   }
-  if(volume_level) {
+  if (volume_level) {
     start_sfx.currentTime = 0.125;
     start_sfx.play();
   }

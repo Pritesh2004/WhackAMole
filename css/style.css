@@ -7,7 +7,12 @@
   font-family: 'Titan One', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-family: 'Open Sans', sans-serif;
 }
-
+#logout-btn{
+  position: absolute;
+  top: 1px;
+  background-color: orangered;
+  border-radius: 5px;
+}
 /* .ui {
   position: absolute;
   display: none;
@@ -27,10 +32,17 @@
   display: grid;
   align-content: center;
   justify-content: center;
+  text-align: center;
   text-transform: uppercase;
   gap: 1.5rem;
   z-index: 2;
   /* display: none; */
+
+}
+.modal .welcome{
+  text-align: center;
+  color: orangered;
+  font-family: 'Titan One', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .modal.hide {
   display: none;

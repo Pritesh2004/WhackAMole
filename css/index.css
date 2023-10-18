@@ -1,12 +1,12 @@
 body{
-    background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url(./../images/game-bg.jpg);
+    background-image: url(./../images/game-bg.jpg);
     background-size: cover;
     min-height: 100vh;
     max-height: 100vh;
     background-repeat: no-repeat;
     overflow: hidden;
 }
-
+/* 
 #navbar{
     width: 100vw;
     height: 9vh;
@@ -44,7 +44,7 @@ a:link {
  }
  a:hover{
     text-decoration: underline;
- }
+ } */
 
  #welcome-box{
     width: 700px;
@@ -57,7 +57,7 @@ a:link {
    font-size: 24px;
    font-weight: bold;
     position: relative;
-    bottom: 30px;
+  
     margin-top: 10px;
     width: 350px;
     height: 40px;
