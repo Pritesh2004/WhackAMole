@@ -6,18 +6,120 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/signup.css">
+    <link rel="icon" href="images/hammer2.png">
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 
-    <title>Document</title>
+    <title>Sign Up</title>
+    <style>
+        body {
+            background-color: rgba(0, 0, 0, 0.05);
+            display: flex;
+            justify-content: center;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        #box {
+            border: 3px transparent solid;
+            border-radius: 15px;
+            margin-top: 50px;
+            background-color: white;
+            width: 80%;
+            max-width: 900px;
+            height: auto;
+            display: grid;
+            grid-template-rows: 100%;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        #box1 {
+            grid-row-start: 1;
+            grid-row-end: 1;
+            grid-column-start: 1;
+            grid-column-end: 1;
+        }
+
+        #box11 {
+            display: flex;
+            flex-direction: column;
+            margin-top: 20px;
+            margin-left: 20px;
+        }
+
+        .field {
+            border: 2px black solid;
+            border-top: transparent;
+            border-left: transparent;
+            border-right: transparent;
+            width: 100%;
+            max-width: 300px;
+            margin-top: 20px;
+            height: 35px;
+        }
+
+        #btn {
+            margin-top: 10px;
+            width: 150px;
+            height: 40px;
+            background-color: orangered;
+            border: 2px transparent solid;
+            border-radius: 10px;
+            color: white;
+            box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        #box2 {
+            grid-row-start: 1;
+            grid-row-end: 1;
+            grid-column-start: 2;
+            grid-column-end: 2;
+        }
+
+        @keyframes smallBig {
+            0% {
+                transform: scale(0);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        #img {
+            animation: smallBig 1.4s ease-out 0.05s;
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Media query for smaller screens */
+        @media only screen and (max-width: 768px) {
+            #box {
+                grid-template-columns: 1fr;
+            }
+
+            #box1,
+            #box2 {
+                grid-column-start: 1;
+                grid-column-end: 1;
+            }
+
+            #box2 {
+                display: none; /* Hide the image on smaller screens */
+            }
+
+            #btn {
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+    </style>
 </head>
 
 <body>
-
-
     <div id="box">
         <div id="box1">
-            <h1 style="margin-top: 50px; margin-left: 80px;">Sign Up</h1>
-            <form action="signup.php" method="post">
+            <h1 style="margin-top: 20px; margin-left: 20px;">Sign Up</h1>
+            <form id="signupForm" action="signup.php" method="post" onsubmit="return validateForm()">
                 <div id="box11">
                     <i class="fa fa-user" aria-hidden="true"></i>
                     <input class="field" type="text" name="firstName" placeholder="Enter First Name" required>
@@ -28,7 +130,6 @@
                         <p>Already have an account? </p><a style="margin-top: 16px; margin-left: 5px;"
                             href="login.html">Login here</a>
                     </div>
-
                     <input id="btn" type="submit" value="Submit">
                 </div>
             </form>
@@ -38,9 +139,42 @@
         </div>
     </div>
 
+    <script>
+        function validateForm() {
+            var email = document.getElementById('email').value;
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+            var confirmPassword = document.getElementById('confirmPassword').value;
 
+            // Basic email validation
+            var emailRegex = /^\S+@\S+\.\S+$/;
+            if (!emailRegex.test(email)) {
+                alert('Please enter a valid email address.');
+                return false;
+            }
 
+            // Basic username validation (length > 3)
+            if (username.length < 4) {
+                alert('Username must be at least 4 characters long.');
+                return false;
+            }
 
+            // Basic password validation (length > 6)
+            if (password.length < 7) {
+                alert('Password must be at least 7 characters long.');
+                return false;
+            }
+
+            // Password and confirm password match
+            if (password !== confirmPassword) {
+                alert('Password and Confirm Password must match.');
+                return false;
+            }
+
+            // All validations passed
+            return true;
+        }
+    </script>
 
 </body>
 
